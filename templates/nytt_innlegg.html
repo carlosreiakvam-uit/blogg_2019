@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Nytt innlegg-->
+    <div class="container">
+        <form action="{{ url_for('newPost') }}" method="post" class="single_post">
+            <h2 class="newPostHeader">Opprett nytt innlegg</h2>
+            {{ form.kategori(class_="newField") }}<br>
+            {{ form.brukernavn.label(class_="newField") }}<br>
+            {{ form.brukernavn(size=32, class_="newField") }}<br>
+            {{ form.tittel.label(class_="newField") }}<br>
+            {{ form.tittel(size=32, class_="newField") }}<br>
+            {{ form.ingress.label(class_="newField") }}<br>
+            {{ form.ingress(size=32, class_="newField") }}<br>
+            {{ form.oppslagstekst.label(class_="newField") }}<br>
+            {{ form.oppslagstekst(size=32, class_="newField") }}<br>
+            <p>{{ form.submit(class_="newField btn btn-light") }}</p>
+        </form>
+    </div>
+
+{% endblock %}

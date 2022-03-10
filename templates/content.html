@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <var class="container dummyTextContainer">
+        <input onclick="window.location = '{{ url_for('newPost') }}'" class="dummyTextField" type="text"
+               placeholder="Nytt innlegg">
+    </var>
+
+    {% if posts %}
+
+        <table>
+            <tbody>
+            {% for post in posts %}
+                <div class="container single_post">
+
+                    <div class="row postInfo">
+
+                        <!--kategori-->
+                        <div class="col-sm-2 post_cat">
+                            /{{ post.kat_navn }}
+                        </div>
+                        <!--Bruker-->
+                        <div class="col-sm-9">
+                            Skrevet av: {{ post.bruker }}
+                            , {{ post.dato }}
+                        </div>
+
+                        <!-- Treff -->
+                        <div class="col-lg-1">
+                            <span class="badge bg-secondary">{{ post.treff }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Tittel-->
+                    <div class="row postHeader">
+                        <div class="col-lg-12">
+                            <a class="nav_link_text"
+                               href={{ url_for('single_post', db_id=post.id) }}>{{ post.tittel }} </a>
+                        </div>
+                    </div>
+
+                    <!-- Tekst-->
+                    <div class="row postText">
+                        <div class="col-lg-12">
+                            {% if single %}
+                                {{ post.oppslagstekst }}
+                            {% else %}
+                                {{ post.ingress }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

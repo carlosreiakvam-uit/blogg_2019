@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="{{ url_for('rediger', post_id=post_id) }}" class="single_post" method="POST">
+        <h2 class="newPostHeader">Rediger innlegg</h2>
+        {{ form.kategori(class_="newField") }}<br>
+        {{ form.tittel.label(class_="newField") }}<br>
+        {{ form.tittel(size=32, class_="newField") }}<br>
+        {{ form.ingress.label(class_="newField") }}<br>
+        {{ form.ingress(size=32, class_="newField") }}<br>
+        {{ form.oppslagstekst.label(class_="newField") }}<br>
+        {{ form.oppslagstekst(size=32, class_="newField") }}<br>
+        {{ form.id }}<br>
+        <p>{{ form.submit(value="Lagre endring", class_="newField btn btn-light") }}</p>
+    </form>
+{% endblock %}

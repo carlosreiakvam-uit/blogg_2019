@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <var class="container dummyTextContainer">
+        <input onclick="window.location = '{{ url_for('newPost') }}'" class="dummyTextField" type="text"
+               placeholder="Nytt innlegg">
+    </var>
+
+    {% if posts %}
+
+        <table>
+            <tbody>
+            {% for post in posts %}
+                <div class="container single_post ">
+
+                    <div class="row postInfo">
+
+                        <div class="col-sm-2 post_cat post_text">
+                            /{{ post.kat_navn }}
+                        </div>
+
+                        <div class="col-sm-9 post_text">
+                            Skrevet av: {{ post.bruker }}
+                            , {{ post.dato }}
+                        </div>
+
+                        <div class="col-lg-1">
+                            <span class="badge bg-secondary">{{ post.treff }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row postHeader">
+                        <div class="col-lg-12">
+                            {{ post.tittel }}
+                        </div>
+                    </div>
+
+                    <div class="row postText">
+                        <div class="col-lg-12">
+                            {{ post.oppslagstekst }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container single_post_buttons">
+                    <button class="btn btn-light"
+                            onclick="window.location = '{{ url_for('rediger', post_id = post.id) }}'">
+                        Rediger
+                    </button>
+                    <button class="btn btn-light"
+                            onclick="window.location = '{{ url_for('delete', post_id = post.id) }}'">
+                        Slett
+                    </button>
+                </div>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

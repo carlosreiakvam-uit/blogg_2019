@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    {#    Custom CSS#}
+    <link rel="stylesheet" href={{ url_for('static', filename='styles.css') }}>
+
+    {#    Google Fonts#}
+    {#    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Syne+Mono&display=swap"#}
+    {#          rel="stylesheet">#}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Geo&family=Raleway&display=swap" rel="stylesheet">
+
+    <!-- Title -->
+    <title>Oppslagstavle</title>
+</head>
+{#class"fixed-top"#}
+<header>
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-lg-7 header">
+                <a class="unstyledLink" href="{{ url_for('index') }}"><h1 class="header_content">Oppslagstavla</h1></a>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</header>
+
+{% block body %}
+
+
+    <div class="container" id="content">
+
+        <div class="row justify-content-center all_content">
+            <div class="col-lg-7 main_frame">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <!-- Nav sidebar-->
+            <div class="col-lg-2  cat_nav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a id="navLink" class="nav-link nav_link_text "
+                           href={{ url_for('index') }}>Vis alle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_link_text link-dark"
+                           href={{ url_for('index', kategori='nyheter') }}>Nyheter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_link_text link-dark"
+                           href={{ url_for('index', kategori="livsstil") }}>Livsstil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_link_text link-dark"
+                           href={{ url_for('index', kategori="kultur") }}>Kultur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_link_text link-dark"
+                           href={{ url_for('index', kategori="annonser") }}>Annonser</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- end nav sidebar-->
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <div class="container footer">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <p class="footer_content">Made by carlonymous 🍕 ©2021</p>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+        </div>
+
+    </footer>
+{% endblock %}
+
+<!-- Bootstrap Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+<!--Custom Javascript -->
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+

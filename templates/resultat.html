@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container single_post resultat">
+        {% if resultat.editPost %}
+            <h4 class="newPostHeader">Redigering av posten var vellykket</h4>
+
+        {% elif resultat.newPost %}
+            <h4 class="newPostHeader">Oppretting av posten var vellykket</h4>
+
+        {% elif resultat.deletePost %}
+            <h4 class="newPostHeader"> Sletting av posten var vellykket</h4>
+        {% endif %}
+
+
+        <button class="newField btn btn-light" onclick="window.location = '{{ url_for('index') }}'">
+            Tilbake
+        </button>
+    </div>
+
+{% endblock %}
